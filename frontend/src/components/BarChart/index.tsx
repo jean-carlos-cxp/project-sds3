@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 import { round } from 'utils/format';
-import { SaleSuccess, SaleSum } from 'types/sale';
+import { SaleSuccess } from 'types/sale';
 import { BASE_URL } from 'utils/requests';
 
 type SeriesData = {
@@ -13,7 +13,7 @@ type SeriesData = {
 type ChartData = {
     labels: {
         categories: string[];
-    }
+    };
     series: SeriesData[];
 }
 
@@ -40,7 +40,7 @@ const BarChart = () => {
 
                 setChartData({
                     labels: {
-                        categories: []
+                        categories: myLabels
                     },
                     series: [
                         {
@@ -62,7 +62,7 @@ const BarChart = () => {
 
     return (
         <Chart
-            options={{ ...options, xaxis: chartData.labels }}
+            options={{ ...options, xaxis: chartData.labels}}
             series={chartData.series}
             type="bar"
             height="240"
